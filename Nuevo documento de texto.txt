@@ -1,0 +1,23 @@
+<?php
+session_start();
+	mysql_connect("localhost", "root", "root");
+	mysql_select_db("sistema_de_notas");
+	$GetUser = mysql_query("SELECT * FROM asignatura where profesores_ID='$ID'");
+	$sumadecampo=mysql_num_rows($GetUser);
+
+	//$tab1= '<table border="1" cellpadding="2" cellspacing="0">';
+		for ($i=0; $i<$sumadecampo; $i++) {
+			$codigo=mysql_result($GetUser, $i,"ID");
+			$descricion=mysql_result($GetUser, $i,"nombre");
+	//		echo'<tr><td>';
+			echo "<div id='cuerpoa'><a href='casa.php?id=$codigo' title='$codigo $descricion' >$codigo $descricion </a></div><br>";
+			
+
+	//		echo "</td></tr>";
+			
+		}
+	//echo "</table>";
+
+	
+		
+?>
